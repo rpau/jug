@@ -1,0 +1,12 @@
+<!DOCTYPE walkmod PUBLIC "-//WALKMOD//DTD"  "http://www.walkmod.com/dtd/walkmod-1.0.dtd" >
+<!-- <walkmod>
+    <transformation type="walkmod:commons:import-cleaner" />
+</walkmod>-->
+
+<walkmod>
+  <chain name="example-chain" >
+    <reader path="src/main/java" />
+    <transformation type="walkmod:commons:import-cleaner" />
+    <writer path="src/main/java"/>
+  </chain>
+</walkmod>
