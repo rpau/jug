@@ -1,5 +1,13 @@
 package org.walkmod.jug.entities;
 
-public class User {
+import javax.persistence.Entity;
 
+@Entity
+public class User {
+	
+	private String screenName;
+	
+	public User(String screenName){
+		this.screenName = screenName;
+	}
 }

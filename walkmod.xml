@@ -1,12 +1,20 @@
 <!DOCTYPE walkmod PUBLIC "-//WALKMOD//DTD"  "http://www.walkmod.com/dtd/walkmod-1.0.dtd" >
-<!-- <walkmod>
-    <transformation type="walkmod:commons:import-cleaner" />
-</walkmod>-->
+<!-- <walkmod> <transformation type="walkmod:commons:import-cleaner" /> </walkmod> -->
 
 <walkmod>
-  <chain name="example-chain" >
-    <reader path="src/main/java" />
-    <transformation type="walkmod:commons:import-cleaner" />
-    <writer path="src/main/java"/>
-  </chain>
+	<chain name="example-chain">
+		<reader path="src/main/java" />
+		<transformation type="walkmod:commons:import-cleaner" />
+		<writer path="src/main/java" />
+	</chain>
+	<chain name="singletons">
+		<reader path="src/main/java">
+ 			<include wildcard="org/walkmod/jug/hibernate/*"></include>
+		</reader>
+		<transformation type="walkmod:commons:template" isMergeable="true">
+			<param name="templates">
+				[ "src/main/walkmod/templates/singleton.groovy"]
+			</param>
+		</transformation>
+	</chain>
 </walkmod>
