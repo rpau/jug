@@ -4,7 +4,7 @@ package ${query.resolve("root.package.name")};
   
   	private static ${query.resolve("type.name")} instance = null;
    
-  	public ${query.resolve("type.name")}(){
+  	private ${query.resolve("type.name")}(){
 	}
 	
 	public static ${query.resolve("type.name")} getInstance() {
