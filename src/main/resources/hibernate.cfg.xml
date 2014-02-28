@@ -7,15 +7,18 @@
 
 	<!-- a SessionFactory instance listed as /jndi/name -->
 	<session-factory name="java:hibernate/SessionFactory">
-
 		<!-- properties -->
+		<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
 		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-		<property name="connection.url">jdbc:hsqldb:hsql://localhost:9001</property>
-		<property name="connection.username">sa</property>
-		<property name="connection.password"></property>
+		<property name="hibernate.connection.url">jdbc:hsqldb:C:\Users\rpau\jug</property>
+		<property name="connection.username">sa</property>		
 		<property name="hbm2ddl.auto">update</property>
-			
+		<property name="show_sql">true</property>
+        <property name="current_session_context_class">thread</property>
+		<mapping class="org.walkmod.jug.model.User"/>	
+		<mapping class="org.walkmod.jug.model.Tweet"/>
 	</session-factory>
+	
 
 </hibernate-configuration>
 
