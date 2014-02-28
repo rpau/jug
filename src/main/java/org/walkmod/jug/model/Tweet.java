@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
 @Table (name= "Tweet")
@@ -19,11 +21,12 @@ public class Tweet implements Serializable {
 	
 	@Id
 	@Column(name = "tweet_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
 	private Long id;
 
 	@ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "screenName")
 	private User user;
 
 	@Column(name = "text")
@@ -32,6 +35,10 @@ public class Tweet implements Serializable {
 	@Column(name = "date")
 	private Date date;
 
+	public Tweet(){
+		
+	}
+	
 	public Tweet(User user, String text) {
 		this.user = user;
 		this.text = text;
