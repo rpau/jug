@@ -1,7 +1,47 @@
 <!DOCTYPE walkmod PUBLIC "-//WALKMOD//DTD"  "http://www.walkmod.com/dtd/walkmod-1.0.dtd" >
-<!-- <walkmod> <transformation type="walkmod:commons:import-cleaner" /> </walkmod> -->
+
 
 <walkmod>
+	<merge-policies>
+		<policy name="custom">
+			<policy-entry policy-type="walkmod:commons:append-policy"
+				object-type="org.walkmod.lang.ast.type.ClassOrInterfaceType"></policy-entry>
+			<policy-entry policy-type="walkmod:commons:field-policy"
+				object-type="org.walkmod.lang.ast.body.FieldDeclaration"></policy-entry>
+			<policy-entry policy-type="walkmod:commons:comment-policy"
+				object-type="org.walkmod.lang.ast.Comment"></policy-entry>
+		</policy>
+
+	</merge-policies>
+	<chain name="hibernate-entities">
+
+		<reader path="src/main/java">
+			<include wildcard="org/walkmod/jug/model/*"></include>
+		</reader>
+
+		<transformation type="walkmod:commons:template"
+			isMergeable="true">
+			<param name="templates">["src/main/walkmod/templates/hibernate-id.groovy"]</param>
+		</transformation>
+		<transformation type="walkmod:commons:template"
+			isMergeable="true">
+			<param name="templates">[
+				"src/main/walkmod/templates/hibernate.groovy"]</param>
+		</transformation>
+		<transformation type="walkmod:commons:scripting">
+			<param name="language">
+				groovy
+			</param>
+			<param name="location">
+				src/main/walkmod/scripts/fields.groovy
+			</param>
+		</transformation>
+		<transformation type="walkmod:commons:setter-getter-gen"
+			isMergeable="true" merge-policy="custom">
+		</transformation>
+		<writer path="src/main/java" />
+	</chain>
+
 	<chain name="example-chain">
 		<reader path="src/main/java" />
 		<transformation type="walkmod:commons:import-cleaner" />
@@ -9,10 +49,11 @@
 	</chain>
 	<chain name="singletons">
 		<reader path="src/main/java">
- 			<include wildcard="org/walkmod/jug/hibernate/*"></include>
- 			<include wildcard="org/walkmod/jug/controller/*"></include>
+			<include wildcard="org/walkmod/jug/hibernate/*"></include>
+			<include wildcard="org/walkmod/jug/controller/*"></include>
 		</reader>
-		<transformation type="walkmod:commons:template" isMergeable="true">
+		<transformation type="walkmod:commons:template"
+			isMergeable="true">
 			<param name="templates">
 				[ "src/main/walkmod/templates/singleton.groovy"]
 			</param>
