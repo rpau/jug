@@ -20,10 +20,9 @@ import org.hibernate.annotations.GenericGenerator;
 public class Tweet implements Serializable {
 	
 	@Id
-	@Column(name = "tweet_id")
-	@GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name="system-uuid", strategy = "uuid")
-	private Long id;
+	@Column(name = "tweet_id")	
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private Integer id;
 
 	@ManyToOne
     @JoinColumn(name = "screenName")
@@ -44,4 +43,38 @@ public class Tweet implements Serializable {
 		this.text = text;
 		date = new Date();		
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	
 }
