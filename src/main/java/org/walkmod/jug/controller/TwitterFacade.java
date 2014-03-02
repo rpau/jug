@@ -57,7 +57,7 @@ public class TwitterFacade {
 				.openSession();
 		List<User> result = null;
 		try {
-			result = s.createCriteria(User.class).setFirstResult(page * rows)
+			result = s.createCriteria(User.class).setFirstResult((page-1) * rows)
 					.setMaxResults(rows).list();
 		} finally {
 			s.close();
