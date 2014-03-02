@@ -76,5 +76,16 @@ public class Tweet implements Serializable {
 		this.date = date;
 	}
 	
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof Tweet){
+			return getId().equals(((Tweet) o).getId());
+		}
+		return false;
+	}
 	
+	@Override
+	public int hashCode(){
+		return getId().hashCode();
+	}
 }

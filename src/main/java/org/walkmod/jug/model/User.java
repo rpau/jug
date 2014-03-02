@@ -10,7 +10,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "User")
 public class User implements Serializable {
-
+	//https://community.jboss.org/wiki/EqualsAndHashCode
+	
 	@Id
 	@Column(name = "screenName", unique=true)
 	private String screenName;
@@ -32,5 +33,16 @@ public class User implements Serializable {
 		this.screenName = screenName;
 	}
 	
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof User){
+			return getScreenName().equals(((User)o).getScreenName());
+		}
+		return false;
+	}
 	
+	@Override
+	public int hashCode(){
+		return getScreenName().hashCode();
+	}
 }

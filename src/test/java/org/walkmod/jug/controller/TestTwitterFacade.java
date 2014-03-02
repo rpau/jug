@@ -17,8 +17,8 @@ public class TestTwitterFacade extends TestCase{
 	@Test
 	public void testCreateUser() throws Exception{
 		User u = new User("@walkmod");
-		TwitterFacade tf = new TwitterFacade();
-		tf.createUser(u);
+	
+		TwitterFacade.getInstance().createUser(u);
 		
 		Session s = HibernateUtil.getInstance().getSessionFactory().openSession();
 		List result = new LinkedList();
@@ -35,11 +35,11 @@ public class TestTwitterFacade extends TestCase{
 	@Test
 	public void testCreateTweet() throws Exception{
 		User u = new User("@acoroleu");
-		TwitterFacade tf = new TwitterFacade();
-		tf.createUser(u);
+		
+		TwitterFacade.getInstance().createUser(u);
 		
 		Tweet tweet = new Tweet(u, "Hello @walkmod!. Nice to meet you!");
-		tf.createTweet(tweet);
+		TwitterFacade.getInstance().createTweet(tweet);
 		
 		Session s = HibernateUtil.getInstance().getSessionFactory().openSession();
 		List result = new LinkedList();
@@ -52,7 +52,7 @@ public class TestTwitterFacade extends TestCase{
 		}
 		Assert.assertEquals(1, result.size());
 		
-		result = tf.getTimeLine("@acoroleu");
+		result = TwitterFacade.getInstance().getTimeLine("@acoroleu");
 		
 		Assert.assertEquals(1, result.size());
 		
