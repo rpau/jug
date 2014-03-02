@@ -10,6 +10,7 @@
 	<chain name="singletons">
 		<reader path="src/main/java">
  			<include wildcard="org/walkmod/jug/hibernate/*"></include>
+ 			<include wildcard="org/walkmod/jug/controller/*"></include>
 		</reader>
 		<transformation type="walkmod:commons:template" isMergeable="true">
 			<param name="templates">
