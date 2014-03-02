@@ -16,5 +16,7 @@ public class ${query.resolve("type.name")} implements Serializable {
 	
  } 
  %>
+ 
+ 	public ${query.resolve("type.name")}(){}
 
 }

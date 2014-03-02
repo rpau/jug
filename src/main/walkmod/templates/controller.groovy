@@ -24,4 +24,21 @@ public class TwitterFacade{
 		
 		return result;	
 	}
+	
+	public void create${query.resolve("type.name")}(
+	${query.resolve("type.name")} ${query.resolve("type.name").toLowerCase()}
+	){
+		Session s = HibernateUtil.getInstance().getSessionFactory()
+				.openSession();
+		Transaction tx = s.beginTransaction();
+		try {
+			s.save(${query.resolve("type.name").toLowerCase()});
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			throw new RuntimeException("Error storing a ${query.resolve("type.name")}",  e);
+		} finally {
+			s.close();
+		}
+	}
 }

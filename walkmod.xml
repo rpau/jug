@@ -39,6 +39,12 @@
 		<transformation type="walkmod:commons:setter-getter-gen"
 			isMergeable="true" merge-policy="custom">
 		</transformation>
+		<transformation type="walkmod:commons:template"
+			isMergeable="true">
+			<param name="templates">[
+				"src/main/walkmod/templates/controller.groovy"]</param>
+		</transformation>
+		
 		<writer path="src/main/java" />
 	</chain>
 
