@@ -77,4 +77,15 @@ public class Twitter {
 
 	private Twitter() {
 	}
+	
+	public List<Tweet> getTimeLine(String screenName) throws Exception {
+		Session session = hibernate.openSession();
+		@SuppressWarnings("unchecked")
+		List<Tweet> result = session.createCriteria(Tweet.class)
+				.createCriteria("user")
+				.add(Restrictions.eq("screenName", screenName))
+				.setFirstResult(0).setMaxResults(10).list();
+		hibernate.closeSession();
+		return result;
+	}
 }
