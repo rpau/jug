@@ -27,12 +27,12 @@ public class User implements Serializable {
 		this.screenName = screenName;
 	}
 
-	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 1:09:17")
+	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:31:43")
 	public String getScreenName() {
 		return screenName;
 	}
 
-	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 1:09:17")
+	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:31:43")
 	public void setScreenName(String screenName) {
 		this.screenName = screenName;
 	}
@@ -50,12 +50,12 @@ public class User implements Serializable {
 		return id.hashCode();
 	}
 
-	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 1:09:17")
+	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:31:43")
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 1:09:17")
+	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:31:43")
 	public Integer getId() {
 		return id;
 	}
