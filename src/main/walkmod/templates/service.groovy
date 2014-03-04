@@ -1,17 +1,19 @@
-package org.walkmod.jug.controller;
+package org.walkmod.jug.service;
 
-
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.walkmod.jug.hibernate.HibernateUtil;
+import org.walkmod.jug.hibernate.Hibernate;
 import org.walkmod.jug.model.${query.resolve("type.name")};
+import org.hibernate.criterion.Restrictions;
 
-public class TwitterFacade{
+public class Twitter {
 	
+	private Hibernate hibernate = Hibernate.getInstance();
 	
 	@SuppressWarnings("unchecked")
-	public List findAll${query.resolve("type.name")}s(int page, int rows){
-		Session s = HibernateUtil.getInstance().getSessionFactory().openSession();
+	public List< ${query.resolve("type.name")} >  findAll${query.resolve("type.name")}s(int page, int rows){
+		Session s = hibernate.openSession();
 		List< ${query.resolve("type.name")} > result = null;
 		try{
 			result = s.createCriteria(${query.resolve("type.name")}.class)
@@ -19,7 +21,7 @@ public class TwitterFacade{
 						.setMaxResults(rows).list();
 		}
 		finally{
-			s.close();
+			hibernate.closeSession();
 		}
 		
 		return result;	
@@ -28,8 +30,7 @@ public class TwitterFacade{
 	public void create${query.resolve("type.name")}(
 	${query.resolve("type.name")} ${query.resolve("type.name").toLowerCase()}
 	){
-		Session s = HibernateUtil.getInstance().getSessionFactory()
-				.openSession();
+		Session s = hibernate.openSession();
 		Transaction tx = s.beginTransaction();
 		try {
 			s.save(${query.resolve("type.name").toLowerCase()});
@@ -38,7 +39,7 @@ public class TwitterFacade{
 			tx.rollback();
 			throw new RuntimeException("Error storing a ${query.resolve("type.name")}",  e);
 		} finally {
-			s.close();
+			hibernate.closeSession();
 		}
 	}
 }

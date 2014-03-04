@@ -13,7 +13,7 @@
 		</policy>
 
 	</merge-policies>
-	<chain name="hibernate-entities">
+	<chain name="hibernate">
 
 		<reader path="src/main/java">
 			<include wildcard="org/walkmod/jug/model/*"></include>
@@ -26,7 +26,7 @@
 		<transformation type="walkmod:commons:template"
 			isMergeable="true">
 			<param name="templates">[
-				"src/main/walkmod/templates/hibernate.groovy"]</param>
+				"src/main/walkmod/templates/hibernate-entities.groovy"]</param>
 		</transformation>
 		<transformation type="walkmod:commons:scripting">
 			<param name="language">
@@ -39,16 +39,20 @@
 		<transformation type="walkmod:commons:setter-getter-gen"
 			isMergeable="true" merge-policy="custom">
 		</transformation>
+		<transformation type="walkmod:commons:template"
+			isMergeable="true">
+			<param name="templates">["src/main/walkmod/templates/hibernate-session.groovy"]</param>
+		</transformation>
 		<writer path="src/main/java" />
 	</chain>
 	
-	<chain name="controllers">
+	<chain name="services">
 		<reader path="src/main/java">
 			<include wildcard="org/walkmod/jug/model/*"></include>
 		</reader>
 		<transformation type="walkmod:commons:template"
 			isMergeable="true">
-			<param name="templates">["src/main/walkmod/templates/controller.groovy"]</param>
+			<param name="templates">["src/main/walkmod/templates/service.groovy"]</param>
 		</transformation>
 	</chain>
 	
@@ -57,20 +61,19 @@
 			<include wildcard="org/walkmod/jug/model/*"></include>
 		</reader>
 		<transformation type="walkmod:commons:template" isMergeable="true">
-			<param name="templates">["src/main/walkmod/templates/REST.groovy"]</param>		
+			<param name="templates">["src/main/walkmod/templates/rest.groovy"]</param>		
 		</transformation>
 		<writer path="src/main/java" />
 	</chain>
 
-	<chain name="example-chain">
+	<!-- chain name="example-chain">
 		<reader path="src/main/java" />
 		<transformation type="walkmod:commons:import-cleaner" />
 		<writer path="src/main/java" />
-	</chain>
+	</chain-->
 	<chain name="singletons">
 		<reader path="src/main/java">
-			<include wildcard="org/walkmod/jug/hibernate/*"></include>
-			<include wildcard="org/walkmod/jug/controller/*"></include>
+			<include wildcard="org/walkmod/jug/service/*"></include>
 		</reader>
 		<transformation type="walkmod:commons:template"
 			isMergeable="true">
