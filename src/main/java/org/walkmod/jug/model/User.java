@@ -1,18 +1,18 @@
 package org.walkmod.jug.model;
 
-import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.io.Serializable;
+import javax.persistence.Column;
 
 @Entity
 @Table(name = "User")
-public class User implements Serializable {
+public class User {
 
-	@Column(name = "screenName", unique = true)
+	@Column(name = "screenName")
 	private String screenName;
 
 	@Id
@@ -24,16 +24,6 @@ public class User implements Serializable {
 	}
 
 	public User(String screenName) {
-		this.screenName = screenName;
-	}
-
-	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:37:25")
-	public String getScreenName() {
-		return screenName;
-	}
-
-	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:37:25")
-	public void setScreenName(String screenName) {
 		this.screenName = screenName;
 	}
 
@@ -50,12 +40,22 @@ public class User implements Serializable {
 		return id.hashCode();
 	}
 
-	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:37:25")
+	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:48:09")
+	public void setScreenName(String screenName) {
+		this.screenName = screenName;
+	}
+
+	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:48:09")
+	public String getScreenName() {
+		return screenName;
+	}
+
+	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:48:09")
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:37:25")
+	@javax.annotation.Generated(value = "org.walkmod", date = "04-mar-2014 21:48:09")
 	public Integer getId() {
 		return id;
 	}
