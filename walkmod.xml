@@ -74,6 +74,7 @@
 	<chain name="singletons">
 		<reader path="src/main/java">
 			<include wildcard="org/walkmod/jug/service/*"></include>
+			<include wildcard="org/walkmod/jug/hibernate/*"></include>
 		</reader>
 		<transformation type="walkmod:commons:template"
 			isMergeable="true">

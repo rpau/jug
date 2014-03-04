@@ -9,14 +9,7 @@ public class Hibernate {
 
 	private SessionFactory sessionFactory;
 
-	private static Hibernate instance = null;
 	
-	public static Hibernate getInstance() {
-		if (instance == null) {
-			instance = new Hibernate();
-		}
-		return instance;
-	}
 	
 	private Hibernate() {
 		Configuration configuration = new Configuration();
