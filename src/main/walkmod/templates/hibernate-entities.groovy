@@ -12,7 +12,9 @@ public class ${query.resolve("type.name")} implements Serializable {
 <% query.resolve("type.fields").each{ 
 
 	field ->
-	out << "@Column( name=\"${field.variables.get(0).id}\") ${field}";
+	if(field.annotations.name.size() == 0 ){
+		out << "@Column( name=\"${field.variables.get(0).id}\") ${field}";
+	}
 	
  } 
  %>
