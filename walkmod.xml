@@ -10,7 +10,7 @@
 				object-type="org.walkmod.lang.ast.body.FieldDeclaration"></policy-entry>
 			<policy-entry policy-type="walkmod:commons:comment-policy"
 				object-type="org.walkmod.lang.ast.Comment"></policy-entry>
-			<policy-entry policy-type="walkmod:commons:append-policy"
+			<policy-entry policy-type="walkmod:commons:assign-policy"
 				object-type="org.walkmod.lang.ast.type.ClassOrInterfaceType"></policy-entry>
 				
 		</policy>
@@ -27,7 +27,7 @@
 			<param name="templates">["src/main/walkmod/templates/hibernate-id.groovy"]</param>
 		</transformation>
 		<transformation type="walkmod:commons:template"
-			isMergeable="true">
+			isMergeable="true" merge-policy="custom">
 			<param name="templates">[
 				"src/main/walkmod/templates/hibernate-entities.groovy"]</param>
 		</transformation>
@@ -40,7 +40,7 @@
 			</param>
 		</transformation>
 		<transformation type="walkmod:commons:setter-getter-gen"
-			isMergeable="true" merge-policy="custom">
+			isMergeable="true" >
 		</transformation>
 		<transformation type="walkmod:commons:template"
 			isMergeable="true">
@@ -69,11 +69,7 @@
 		<writer path="src/main/java" />
 	</chain>
 
-	<!-- chain name="example-chain">
-		<reader path="src/main/java" />
-		<transformation type="walkmod:commons:import-cleaner" />
-		<writer path="src/main/java" />
-	</chain-->
+	
 	<chain name="singletons">
 		<reader path="src/main/java">
 			<include wildcard="org/walkmod/jug/service/*"></include>
@@ -86,4 +82,10 @@
 			</param>
 		</transformation>
 	</chain>
+	
+	<!-- chain name="example-chain">
+		<reader path="src/main/java" />
+		<transformation type="walkmod:commons:import-cleaner" />
+		<writer path="src/main/java" />
+	</chain -->
 </walkmod>
