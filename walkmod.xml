@@ -10,6 +10,9 @@
 				object-type="org.walkmod.lang.ast.body.FieldDeclaration"></policy-entry>
 			<policy-entry policy-type="walkmod:commons:comment-policy"
 				object-type="org.walkmod.lang.ast.Comment"></policy-entry>
+			<policy-entry policy-type="walkmod:commons:append-policy"
+				object-type="org.walkmod.lang.ast.type.ClassOrInterfaceType"></policy-entry>
+				
 		</policy>
 
 	</merge-policies>
