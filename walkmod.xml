@@ -29,7 +29,7 @@
 		<transformation type="walkmod:commons:template"
 			isMergeable="true" merge-policy="custom">
 			<param name="templates">[
-				"src/main/walkmod/templates/hibernate-entities.groovy"]</param>
+				"src/main/walkmod/templates/jpa-entities.groovy"]</param>
 		</transformation>
 		<transformation type="walkmod:commons:scripting">
 			<param name="language">
