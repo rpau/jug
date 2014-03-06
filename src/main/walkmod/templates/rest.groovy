@@ -24,7 +24,7 @@ public class TwitterAPI {
 		String str = "";
 
 		try {
-			List< ${query.resolve("type.name")} > ${query.resolve("type.name").toLowerCase()}s = Collections.EMPTY_LIST;
+			List< ${query.resolve("type.name")} > ${query.resolve("type.name").toLowerCase()}s = Collections.emptyList();
 			${query.resolve("type.name").toLowerCase()}s = Twitter.getInstance().findAll${query.resolve("type.name")}s(page, rows);
 			ObjectMapper mapper = new ObjectMapper();
 			str = mapper.writeValueAsString(${query.resolve("type.name").toLowerCase()}s);
