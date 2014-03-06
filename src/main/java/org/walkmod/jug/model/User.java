@@ -3,7 +3,7 @@ package org.walkmod.jug.model;
 
 public class User {
 
-	private String screenName;
+	private 		String screenName;
 
 
 	public User() {

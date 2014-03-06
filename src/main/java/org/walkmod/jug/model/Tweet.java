@@ -1,6 +1,7 @@
 package org.walkmod.jug.model;
 
 import java.util.Date;
+import java.util.Calendar;
 
 public class Tweet {
 
