@@ -6,7 +6,6 @@ import java.util.Collections;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -17,9 +16,10 @@ import org.walkmod.jug.model.${query.resolve("type.name")};
 
 @Path("/twitter")
 public class TwitterAPI {
+	
 
 	@GET
-	@Path("/findAll${query.resolve("type.name")}s/{page}/{rows}")
+	@Path("/${query.resolve("type.name").toLowerCase()}/{page}/{rows}")
 	public Response findAll${query.resolve("type.name")}s(@PathParam("page") int page, @PathParam("rows") int rows) {
 		String str = "";
 
@@ -35,5 +35,8 @@ public class TwitterAPI {
 		return Response.status(200).entity(str).build();
 
 	}
+	
+	
+
 	
 }

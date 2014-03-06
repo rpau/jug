@@ -16,7 +16,7 @@
 		</policy>
 
 	</merge-policies>
-	<chain name="hibernate">
+	<chain name="jpa-hibernate">
 
 		<reader path="src/main/java">
 			<include wildcard="org/walkmod/jug/model/*"></include>
@@ -24,7 +24,7 @@
 
 		<transformation type="walkmod:commons:template"
 			isMergeable="true">
-			<param name="templates">["src/main/walkmod/templates/hibernate-id.groovy"]</param>
+			<param name="templates">["src/main/walkmod/templates/jpa-id.groovy"]</param>
 		</transformation>
 		<transformation type="walkmod:commons:template"
 			isMergeable="true" merge-policy="custom">
@@ -83,9 +83,9 @@
 		</transformation>
 	</chain>
 	
-	<!-- chain name="example-chain">
+	<chain name="import-cleaner">
 		<reader path="src/main/java" />
 		<transformation type="walkmod:commons:import-cleaner" />
 		<writer path="src/main/java" />
-	</chain -->
+	</chain>
 </walkmod>
