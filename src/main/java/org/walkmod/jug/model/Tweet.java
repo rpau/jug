@@ -6,7 +6,7 @@ public class Tweet {
 
 	private User user;
 
-	private String text;
+	public String text;
 
 	private Date date;
 
