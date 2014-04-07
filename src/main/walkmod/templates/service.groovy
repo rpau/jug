@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.walkmod.jug.hibernate.Hibernate;
 import org.walkmod.jug.model.${query.resolve("type.name")};
-import org.hibernate.criterion.Restrictions;
+
 
 public class Twitter {
 	

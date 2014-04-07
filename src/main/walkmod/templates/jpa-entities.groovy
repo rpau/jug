@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "${query.resolve("type.name")}")
 public class ${query.resolve("type.name")} implements Serializable {

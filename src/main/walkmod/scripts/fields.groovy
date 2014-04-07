@@ -1,6 +1,6 @@
-import org.walkmod.lang.ast.body.ModifierSet;
+import org.walkmod.javalang.ast.body.ModifierSet;
 import java.lang.reflect.Modifier;
-import org.walkmod.lang.ast.body.FieldDeclaration;
+import org.walkmod.javalang.ast.body.FieldDeclaration;
 
 for(type in node.types){	
   def fields = type.members.findAll({it instanceof FieldDeclaration});
