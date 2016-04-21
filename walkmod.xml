@@ -1,13 +1,5 @@
-<!DOCTYPE walkmod PUBLIC "-//WALKMOD//DTD"  "http://www.walkmod.com/dtd/walkmod-1.0.dtd" >
+<!DOCTYPE walkmod PUBLIC "-//WALKMOD//DTD"  "http://www.walkmod.com/dtd/walkmod-1.1.dtd" >
 <walkmod>
-	<plugins>
-		<plugin groupId="org.walkmod" artifactId="walkmod-imports-cleaner-plugin"
-			version="2.0" />
-		<plugin groupId="org.walkmod" artifactId="walkmod-license-applier-plugin"
-			version="2.0" />
-		<plugin groupId="org.walkmod" artifactId="walkmod-setter-getter-plugin"
-			version="2.0" />
-	</plugins>
 
 	<chain name="jpa-hibernate">
 		<reader path="src/main/java">
@@ -32,7 +24,7 @@
 			</param>
 		</transformation>
 
-		<transformation type="walkmod:commons:setter-getter-gen"
+		<transformation type="setter-getter:setter-getter-gen"
 			isMergeable="true">
 		</transformation>
 		<transformation type="walkmod:commons:template"
@@ -78,9 +70,9 @@
 	</chain>
 
 	<chain name="common">
-		<transformation type="walkmod:commons:import-cleaner" />
+		<transformation type="imports-cleaner" />
 
-		<transformation type="walkmod:commons:license-generator">
+		<transformation type="license-applier">
 			<param name="licenseFile">src/main/license-header.txt</param>
 		</transformation>
 	</chain>
