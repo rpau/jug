@@ -1,79 +1,34 @@
-<!DOCTYPE walkmod PUBLIC "-//WALKMOD//DTD"  "http://www.walkmod.com/dtd/walkmod-1.1.dtd" >
+<!DOCTYPE walkmod PUBLIC "-//WALKMOD//DTD" "http://www.walkmod.com/dtd/walkmod-1.1.dtd">
 <walkmod>
 
-	<chain name="jpa-hibernate">
-		<reader path="src/main/java">
-			<include wildcard="org/walkmod/jug/model/*"></include>
-		</reader>
+    <conf-providers>
+        <conf-provider type="maven"/>
+    </conf-providers>
+	
+	<chain name="import-cleaner">
+        <transformation type="org.walkmod:walkmod-imports-cleaner-plugin:import-cleaner"/>
+    </chain>
 
-		<transformation type="walkmod:commons:template"
-			isMergeable="true">
-			<param name="templates">["src/main/walkmod/templates/jpa-id.groovy"]</param>
-		</transformation>
-		<transformation type="walkmod:commons:template"
-			isMergeable="true">
-			<param name="templates">[
-				"src/main/walkmod/templates/jpa-entities.groovy"]</param>
-		</transformation>
-		<transformation type="walkmod:commons:scripting">
-			<param name="language">
-				groovy
-			</param>
-			<param name="location">
-				src/main/walkmod/scripts/fields.groovy
-			</param>
-		</transformation>
-
-		<transformation type="setter-getter:setter-getter-gen"
-			isMergeable="true">
-		</transformation>
-		<transformation type="walkmod:commons:template"
-			isMergeable="true">
-			<param name="templates">["src/main/walkmod/templates/hibernate-session.groovy"]</param>
-		</transformation>
-		<writer path="src/main/java" />
-	</chain>
-
-	<chain name="services">
-		<reader path="src/main/java">
-			<include wildcard="org/walkmod/jug/model/*"></include>
-		</reader>
-		<transformation type="walkmod:commons:template"
-			isMergeable="true">
-			<param name="templates">["src/main/walkmod/templates/service.groovy"]</param>
-		</transformation>
-	</chain>
-
-	<chain name="rest">
-		<reader path="src/main/java">
-			<include wildcard="org/walkmod/jug/model/*"></include>
-		</reader>
-		<transformation type="walkmod:commons:template"
-			isMergeable="true">
-			<param name="templates">["src/main/walkmod/templates/rest.groovy"]</param>
-		</transformation>
-		<writer path="src/main/java" />
-	</chain>
-
-
-	<chain name="singletons">
-		<reader path="src/main/java">
-			<include wildcard="org/walkmod/jug/service/*"></include>
-			<include wildcard="org/walkmod/jug/hibernate/*"></include>
-		</reader>
-		<transformation type="walkmod:commons:template"
-			isMergeable="true">
-			<param name="templates">
-				[ "src/main/walkmod/templates/singleton.groovy"]
-			</param>
-		</transformation>
-	</chain>
-
-	<chain name="common">
-		<transformation type="imports-cleaner" />
-
-		<transformation type="license-applier">
-			<param name="licenseFile">src/main/license-header.txt</param>
-		</transformation>
-	</chain>
+    <chain name="license-applier">
+        <transformation type="org.walkmod:walkmod-license-applier-plugin:license-generator">
+            <param name="action">update</param>
+            <param name="licenseFile">src/main/license-header.txt</param>
+        </transformation>
+    </chain>
+	
+	<chain name="checkstyle">
+        <transformation type="org.walkmod:walkmod-checkstyle-plugin:checkstyle">
+            <param name="configurationFile">src/main/google.xml</param>
+        </transformation>
+    </chain>
+	
+	<chain name="dead-code-cleaner">
+        <transformation type="org.walkmod:walkmod-dead-code-cleaner-plugin:dead-code-cleaner"/>
+    </chain>
+	
+    <chain name="pmd">
+        <transformation type="org.walkmod:walkmod-pmd-plugin:pmd">
+            <param name="configurationFile">src/main/pmd.xml</param>
+        </transformation>
+    </chain>
 </walkmod>
