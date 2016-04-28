@@ -1,38 +1,92 @@
-/* 
-  Copyright (C) 2013 Raquel Pau and Albert Coroleu.
- 
- Walkmod is free software: you can redistribute it and/or modify
- it under the terms of the GNU Lesser General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
- 
- Walkmod is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU Lesser General Public License for more details.
- 
- You should have received a copy of the GNU Lesser General Public License
- along with Walkmod.  If not, see <http://www.gnu.org/licenses/>.*/
+/* Some licenseesdsdgfdfgf
+ Update*/
 
 package org.walkmod.jug.model;
 
-import java.util.Date;
+import java.util.*;
+import java.applet.*;
 
+/**
+ * 
+ * @author rlazdauskas
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
 public class Tweet {
-
-   private User user;
+	
+			private String qweqweqwe;
+	
+   private String user;
 
    public String text;
 
    private Date date;
+   
+   
+   private int a;
+   private int b;
+   private String[] c;
 
+   /**
+    * 
+    */
    public Tweet() {
+      String asd;
    }
 
-   public Tweet(User user, String text) {
+   public Tweet(String user, String text) {
       this.user = user;
       this.text = text;
       date = new Date();
+      try {
+      } catch (Exception e) {
+
+      }
+
+      if ((a == 0) || (b == 0));   // Oops! This line does nothing...
+      Integer o = null; 
+      
+   // Initialize an array a
+      for (int i = 0; i < c.length; i++) {
+		
+	}
+      
+      failMethod("asdasd");
+ 
+  Boolean bar = new Boolean("true"); // just do a Boolean bar = Boolean.TRUE;
+ Boolean buz = Boolean.valueOf(false); // just do a Boolean buz = Boolean.FALSE;
+ 
+ 
    }
+
+private String failMethod(String string) {
+	    // should be &&
+if (string!=null || !string.equals(""))
+  return string;
+// should be ||
+if (string==null && string.equals(""))
+  return string;
+return string;
+}
 
 }

@@ -1,34 +1,22 @@
 <!DOCTYPE walkmod PUBLIC "-//WALKMOD//DTD" "http://www.walkmod.com/dtd/walkmod-1.1.dtd">
 <walkmod>
-
-    <conf-providers>
-        <conf-provider type="maven"/>
-    </conf-providers>
-	
-	<chain name="import-cleaner">
-        <transformation type="org.walkmod:walkmod-imports-cleaner-plugin:import-cleaner"/>
-    </chain>
-
-    <chain name="license-applier">
-        <transformation type="org.walkmod:walkmod-license-applier-plugin:license-generator">
-            <param name="action">update</param>
-            <param name="licenseFile">src/main/license-header.txt</param>
-        </transformation>
-    </chain>
-	
-	<chain name="checkstyle">
-        <transformation type="org.walkmod:walkmod-checkstyle-plugin:checkstyle">
-            <param name="configurationFile">src/main/google.xml</param>
-        </transformation>
-    </chain>
-	
-	<chain name="dead-code-cleaner">
-        <transformation type="org.walkmod:walkmod-dead-code-cleaner-plugin:dead-code-cleaner"/>
-    </chain>
-	
     <chain name="pmd">
-        <transformation type="org.walkmod:walkmod-pmd-plugin:pmd">
+        <reader path="src/main/java">
+           <include wildcard="org/walkmod/jug/model/Tweet.java"/>
+        </reader>
+        <transformation type="pmd">
             <param name="configurationFile">src/main/pmd.xml</param>
         </transformation>
+        <writer path="src/main/java"/>
     </chain>
+	
+    <chain name="checkstyle">
+        <reader path="src/main/java/">
+           <include wildcard="org/walkmod/jug/model/Tweet.java"/>
+        </reader>
+        <transformation type="checkstyle">
+            <param name="configurationFile">src/main/google.xml</param>
+        </transformation>
+        <writer path="src/main/java"/>
+    </chain>	
 </walkmod>
