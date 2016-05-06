@@ -52,7 +52,6 @@
 		</repository>
 	</repositories>
 	<build>
-		<finalName>jug</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -63,7 +62,23 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.walkmod</groupId>
+				<artifactId>maven-walkmod-plugin</artifactId>
+				<version>1.3</version>
+				<configuration>
+					<skipWalkmod>${skipWalkmod}</skipWalkmod>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>apply</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 </project>
