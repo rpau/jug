@@ -2,21 +2,23 @@
 <walkmod>
     <chain name="pmd">
         <reader path="src/main/java">
-           <include wildcard="org/walkmod/jug/model/Tweet.java"/>
+            <include wildcard="org/walkmod/jug/model/Tweet.java"/>
         </reader>
         <transformation type="pmd">
             <param name="configurationFile">src/main/pmd.xml</param>
         </transformation>
         <writer path="src/main/java"/>
     </chain>
-	
     <chain name="checkstyle">
         <reader path="src/main/java/">
-           <include wildcard="org/walkmod/jug/model/Tweet.java"/>
+            <include wildcard="org/walkmod/jug/model/Tweet.java"/>
         </reader>
         <transformation type="checkstyle">
             <param name="configurationFile">src/main/google.xml</param>
         </transformation>
         <writer path="src/main/java"/>
-    </chain>	
+    </chain>
+    <chain name="default">
+        <transformation type="dead-code-cleaner"/>
+    </chain>
 </walkmod>
